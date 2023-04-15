@@ -11,6 +11,7 @@ dependencies:
   - argon2-cffi-bindings=21.2.0=py39hb9d737c_3
   - arviz=0.15.1=pyhd8ed1ab_0
   - asttokens=2.2.1=pyhd8ed1ab_0
+  - atk-1.0=2.38.0=hd4edc92_1
   - attr=2.5.1=h166bdaf_1
   - attrs=22.2.0=pyh71513ae_0
   - backcall=0.2.0=pyh9f0ad1d_0
@@ -65,15 +66,21 @@ dependencies:
   - fonts-conda-forge=1=0
   - fonttools=4.39.3=py39h72bdee0_0
   - freetype=2.12.1=hca18f0e_1
+  - fribidi=1.0.10=h36c2ea0_0
   - gcc=11.3.0=h02d0930_12
   - gcc_impl_linux-64=11.3.0=hab1b70f_19
   - gcc_linux-64=11.3.0=he6f903b_12
+  - gdk-pixbuf=2.42.10=h6b639ba_2
   - gettext=0.21.1=h27087fc_0
+  - giflib=5.2.1=h0b41bf4_3
   - glib=2.74.1=h6239696_1
   - glib-tools=2.74.1=h6239696_1
   - graphite2=1.3.13=h58526e2_1001
+  - graphviz=7.1.0=h2e5815a_0
   - gst-plugins-base=1.22.0=h4243ec0_2
   - gstreamer=1.22.0=h25f0c4b_2
+  - gtk2=2.24.33=h90689f9_2
+  - gts=0.7.6=h64030ff_2
   - gxx=11.3.0=h02d0930_12
   - gxx_impl_linux-64=11.3.0=hab1b70f_19
   - gxx_linux-64=11.3.0=hc203a17_12
@@ -94,6 +101,7 @@ dependencies:
   - jaxlib=0.4.7=cpu_py39h257919f_0
   - jedi=0.18.2=pyhd8ed1ab_0
   - jinja2=3.1.2=pyhd8ed1ab_1
+  - joblib=1.2.0=pyhd8ed1ab_0
   - jsonschema=4.17.3=pyhd8ed1ab_0
   - jupyter_client=8.1.0=pyhd8ed1ab_0
   - jupyter_core=5.3.0=py39hf3d152e_0
@@ -131,6 +139,7 @@ dependencies:
   - libgcc-devel_linux-64=11.3.0=h210ce93_19
   - libgcc-ng=12.2.0=h65d4601_19
   - libgcrypt=1.10.1=h166bdaf_0
+  - libgd=2.3.3=hfa28ad5_6
   - libgfortran-ng=12.2.0=h69a702a_19
   - libgfortran5=12.2.0=h337968e_19
   - libglib=2.74.1=h606061b_1
@@ -151,6 +160,7 @@ dependencies:
   - libpng=1.6.39=h753d276_0
   - libpq=15.2=hb675445_0
   - libprotobuf=3.21.12=h3eb15da_0
+  - librsvg=2.54.4=h7abd40a_0
   - libsanitizer=11.3.0=h239ccf8_19
   - libsndfile=1.2.0=hb75c966_0
   - libsodium=1.0.18=h36c2ea0_1
@@ -160,8 +170,10 @@ dependencies:
   - libstdcxx-ng=12.2.0=h46fd767_19
   - libsystemd0=253=h8c4010b_1
   - libtiff=4.5.0=ha587672_6
+  - libtool=2.4.7=h27087fc_0
   - libuuid=2.38.1=h0b41bf4_0
   - libvorbis=1.3.7=h9c3ff4c_0
+  - libwebp=1.3.0=hb47c5f0_0
   - libwebp-base=1.3.0=h0b41bf4_0
   - libxcb=1.13=h7f98852_1004
   - libxkbcommon=1.5.0=h79f4944_1
@@ -206,6 +218,7 @@ dependencies:
   - pandas=1.5.3=py39h2ad29b5_1
   - pandoc=2.19.2=h32600fe_2
   - pandocfilters=1.5.0=pyhd8ed1ab_0
+  - pango=1.50.14=hd33c08f_0
   - parso=0.8.3=pyhd8ed1ab_0
   - patsy=0.5.3=pyhd8ed1ab_0
   - pcre2=10.40=hc3806b6_0
@@ -241,6 +254,7 @@ dependencies:
   - python=3.9.16=h2782a2a_0_cpython
   - python-dateutil=2.8.2=pyhd8ed1ab_0
   - python-fastjsonschema=2.16.3=pyhd8ed1ab_0
+  - python-graphviz=0.20.1=pyh22cad53_0
   - python-json-logger=2.0.7=pyhd8ed1ab_0
   - python-tzdata=2023.3=pyhd8ed1ab_0
   - python_abi=3.9=3_cp39
@@ -253,6 +267,7 @@ dependencies:
   - requests=2.28.2=pyhd8ed1ab_1
   - rfc3339-validator=0.1.4=pyhd8ed1ab_0
   - rfc3986-validator=0.1.1=pyh9f0ad1d_0
+  - scikit-learn=1.2.2=py39hd189fd4_1
   - scipy=1.10.1=py39h7360e5f_0
   - seaborn=0.12.2=hd8ed1ab_0
   - seaborn-base=0.12.2=pyhd8ed1ab_0
@@ -267,6 +282,7 @@ dependencies:
   - sysroot_linux-64=2.12=he073ed8_15
   - tbb=2021.8.0=hf52228f_0
   - terminado=0.17.1=pyh41d4057_0
+  - threadpoolctl=3.1.0=pyh8a188c0_0
   - tinycss2=1.2.1=pyhd8ed1ab_0
   - tk=8.6.12=h27826a3_0
   - toml=0.10.2=pyhd8ed1ab_0
