@@ -2,14 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import pymc as pm
 import arviz as az
-import pytensor.tensor as pt
-from pytensor.tensor.random.utils import params_broadcast_shapes
-from sklearn.preprocessing import MaxAbsScaler
-from scipy.stats import pearsonr
-
-from utils import delayed_adstock
 
 def plot_posterior(model_posterior_predictive,date_data,target_data,target_scaler,plot_settings):
     posterior_predictive_likelihood = az.extract(
@@ -47,11 +40,12 @@ def plot_posterior(model_posterior_predictive,date_data,target_data,target_scale
         x=date_data,
         y=target_data,
         color="black",
-        label="target (scaled)",
+        label="revenue)",
         ax=ax,
     )
     ax.legend(loc="upper left")
-    ax.set(title="Base Model - Posterior Predictive Samples")
+    ax.set(title="Posterior Predictive Samples")
+    plt.xticks(rotation=30)
     plt.show()
 
 def plot_prior_predictive_samples(model_prior_predictive,target_scaled,date_data,plot_settings):
@@ -71,7 +65,9 @@ def plot_prior_predictive_samples(model_prior_predictive,target_scaled,date_data
             alpha=0.1,
         )
 
-    sns.lineplot(x=date_data, y=target_scaled, color="black", label="target (scaled)", ax=ax)
+    sns.lineplot(x=date_data, y=target_scaled, color="black", label="revenue(scaled)", ax=ax)
     ax.legend()
     ax.set(title="Model - Prior Predictive Samples")
+    plt.xticks(rotation=30)
     plt.show()
+
