@@ -1,9 +1,15 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 import pymc as pm
 import arviz as az
 import pytensor.tensor as pt
 from pytensor.tensor.random.utils import params_broadcast_shapes
+from sklearn.preprocessing import MaxAbsScaler
+from scipy.stats import pearsonr
+from statsmodels.graphics.tsaplots import plot_acf
+from statsmodels.graphics.tsaplots import plot_pacf
 
 def summary_table(raw_data_train):
     summary_table = pd.DataFrame(index =raw_data_train.columns)
@@ -18,13 +24,17 @@ def summary_table(raw_data_train):
     return summary_table
 
 def _batched_convolution(x, w, axis: int = 0):
-    # used from https://github.com/pymc-labs/pymc-marketing/blob/main/pymc_marketing/mmm/transformers.py
+    # amazingly efficient calculation is borrowed from : https://github.com/pymc-labs/pymc-marketing/blob/main/pymc_marketing/mmm/transformers.py
     orig_ndim = x.ndim
     axis = axis if axis >= 0 else orig_ndim + axis
     w = pt.as_tensor(w)
     x = pt.moveaxis(x, axis, -1)
     l_max = w.type.shape[-1]
-   
+    if l_max is None:
+        try:
+            l_max = w.shape[-1].eval()
+        except Exception:
+            pass
     x_shape, w_shape = params_broadcast_shapes([x.shape, w.shape], [1, 1])
     x = pt.broadcast_to(x, x_shape)
     w = pt.broadcast_to(w, w_shape)
@@ -35,7 +45,6 @@ def _batched_convolution(x, w, axis: int = 0):
         padded_x = pt.set_subtensor(
             padded_x[..., i:x_time, i], x[..., : x_time - i]
         )
-
     conv = pt.sum(padded_x * w[..., None, :], axis=-1)
     return pt.moveaxis(conv, -1, axis + conv.ndim - orig_ndim)
 
@@ -46,8 +55,7 @@ def delayed_adstock(
     l_max: int = 12,
     axis: int = 0,
 ):
-    # used from https://github.com/pymc-labs/pymc-marketing/blob/main/pymc_marketing/mmm/transformers.py
-  
+    # amazingly efficient calculation is borrowed from : https://github.com/pymc-labs/pymc-marketing/blob/main/pymc_marketing/mmm/transformers.py
     w = pt.power(
         pt.as_tensor(alpha)[..., None],
         (pt.arange(l_max, dtype=x.dtype) - pt.as_tensor(theta)[..., None]) ** 2,
