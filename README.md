@@ -7,9 +7,9 @@ conda env create -f environment.yml
 
 This work is based on [Jin, Yuxue, et al (2017)](https://research.google/pubs/pub46001/) in which they provided a Bayesian mixed media model with carryover and shape effect. As it is described in the case study I avoided modeling ad stock shape effects with saturation or diminishing returns. For the sake of completeness, I will define the problem:
 
-![|left](https://lh3.googleusercontent.com/rV1UvxY5yob9VpoPAKjuuqJzxpGinvIPoWTuRpiehwmX__b35S-sDXzO9h1US8Md4vXJaSTDcjmeJAWcWXzkYEHB0aAzNuSSTdylE-jjzmqtBbVL2qGwmZfYsC3uCy1VHF8Pw3aWNZhiLCh-7t9yTFo)
+
 Time series data with $y$ target variable (revenue), channel spending $x$ and control variables $z$ captures trend and seasonality. $t = 1 \dots T$ . There are $M$ media channels in the media mix, and $x_{t,m}$ is the media spend of channel $m$ at week $t$ It is considered a linear model of the form where $\tau$ is the intercept capturing baseline sales, and $\epsilon$ capturing noise is assumed to be uncorrelated with other variables and have constant variance. $f$ is the ad stock function:
-![|right](https://lh5.googleusercontent.com/TRlVRfwJuE7c5W27-EV_kTFXtSgMUSeo2DNs5NeUOjw1mALIsaC1DB9mGrcyiV7vPssDj-vyAAvJ1NMWlt74e6HkHSAzLXKa1jRLGnqYa9_dQhB_ZeDLo4i4RtFf6n7fiaDq6V9pWH3BDJZYVVFcMv8)
+
 Ad stock function takes as input media spends for a given media during  L weeks, the retain-rate and the delay of the peak. The delay is the number of periods before the peak effect. The ad stock function is responsible for capturing the temporal effects of diverse advertising channels. $\alpha_{m}$ representing the retention rate of ad effect  and $\theta_{m}$ represents the delay in the peak effect of the $m$-th channel. $L$ is the maximum time period that delay can incur effect and it is set to be 13.
 
 ### Seasonality and Trend
