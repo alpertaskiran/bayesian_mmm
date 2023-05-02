@@ -21,8 +21,8 @@ def summary_table(raw_data_train):
 
 
 def _batched_convolution(x, w, axis: int = 0):
-    # amazingly efficient calculation is borrowed from :
-    #  https://github.com/pymc-labs/pymc-marketing/blob/main/pymc_marketing/mmm/transformers.py
+    # this efficient calculation is borrowed from :
+    # https://github.com/pymc-labs/pymc-marketing/blob/main/pymc_marketing/mmm/transformers.py
     orig_ndim = x.ndim
     axis = axis if axis >= 0 else orig_ndim + axis
     w = pt.as_tensor(w)
@@ -54,8 +54,8 @@ def delayed_adstock(
     l_max: int = 12,
     axis: int = 0,
 ):
-    # amazingly efficient calculation is borrowed from :
-    #  https://github.com/pymc-labs/pymc-marketing/blob/main/pymc_marketing/mmm/transformers.py
+    # this amazing efficient calculation is borrowed from :
+    # https://github.com/pymc-labs/pymc-marketing/blob/main/pymc_marketing/mmm/transformers.py
     w = pt.power(
         pt.as_tensor(alpha)[..., None],
         (pt.arange(l_max, dtype=x.dtype) - pt.as_tensor(theta)[..., None]) ** 2,
@@ -78,7 +78,7 @@ def max_abs_scaler(df, boolean_target):
 
 
 def create_trend_seasonality(df):
-    # creating trend and seasonality
+    # creating linear trend and seasonality
     n_order = 7
     periods = df['day'] / 365.25
     fourier_features = pd.DataFrame(
